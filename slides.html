@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>An introduction to problem solving with R</title>
+    <title>An introduction to (problem solving with) R</title>
     <meta charset="utf-8">
     <meta name="author" content="Sina Rüeger" />
     <meta name="date" content="2018-09-12" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/ionicons/css/ionicons.min.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
@@ -14,7 +15,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# An introduction to problem solving with R
+# An introduction to (problem solving with) R
 ### Sina Rüeger
 ### 2018-09-12
 
@@ -40,28 +41,35 @@ class: left, middle
 
 - <i class="fab  fa-r-project " style="color:#88398a;"></i>-Ladies Lausanne co-organiser
 
-- <i class="ion  ion-heart "></i> Data Science + Personalised Med + 
+- <i class="ion  ion-heart "></i> Data analysis &amp; Genetic data &amp; Data visualisation
 
 ---
-class: center, middle
+class: center, middle, inverse
 
 # What is R?
 
 ---
+class: left, middle
 
 # R ...
 
-- is a program for statistical computing
+- is "a programming language for statistical computing""
 
-- just celebrated 25 year anniversary
+- is free
 
-- To use R you need a computer + internet
+- has a webpage: https://www.r-project.org/
 
-- You don't even need data, cause thats already provided
+- just celebrated its [25 year anniversary](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.1740-9713.2018.01169.x)
 
-- History / Rstudio / Tidyverse / 25 years R
+- comes with *basic*/*default* packages, but there are over 13'000 R-packages 😮 that can be installed through [CRAN](https://cran.r-project.org/web/packages/) or repositories like github
+
 
 ---
+class: left, middle
+
+```
+data &gt; distill knowlege &gt; impact
+```
 
 
 ---
@@ -70,32 +78,117 @@ class: inverse, center, middle
 # What is R used for?
 
 ---
+class: middle
 
 # Quite a few things
 
-- In general all data science,data analysis &amp; stats stuff
+- In general lots of (but not all) data science, data analysis &amp; stats stuff
 
 - Me: genomics
 
-- make presentations (this one)
+- To make presentations (this one)
 
 
 ---
 
-# Data journalism
+## Classical model fitting
 
-&lt;img src="img/datajournalism.png" width="600"&gt;
 
-[Source](https://www.srf.ch/static/srf-data/data/2018/federer/#/en)
 
 ---
 
-# Make gifs
+## Data journalism
 
+&lt;a href="https://www.srf.ch/static/srf-data/data/2018/federer/#/en"&gt;
+&lt;img border="0" alt="SRF" src="img/datajournalism.png" width="800"&gt;
+&lt;/a&gt;
+
+
+[Source: SRF](https://www.srf.ch/static/srf-data/data/2018/federer/#/en)
+
+---
+
+## Data journalism
+
+&lt;a href="https://srfdata.github.io/2018-01-roger-federer/#load_data"&gt;
+&lt;img border="0" alt="SRF" src="img/datajournalism_code.png" width="800"&gt;
+&lt;/a&gt;
+
+[Source: SRF](https://srfdata.github.io/2018-01-roger-federer/)
+
+---
+
+## Memes and GIFs
+
+&lt;a href="http://djnavarro.net/post/2018-05-03-valid-social-commentary/"&gt;
 &lt;img src="http://djnavarro.net/post/2018-05-03-valid-social-commentary_files/figure-html/unnamed-chunk-2-1.png" width="600"&gt;
+&lt;/a&gt;
 
-[Source by Danielle Navaro](http://djnavarro.net/post/2018-05-03-valid-social-commentary/)
+[Source: Danielle Navaro](http://djnavarro.net/post/2018-05-03-valid-social-commentary/)
 
+---
+
+## Memes and GIFs
+
+
+```r
+## install.packages("glue") ## only run this once
+## install.packages("meme") ## only run this once
+
+library(meme) ## tell R that the meme package is needed
+library(glue) ## tell R that the glue package is needed
+
+loc &lt;- "https://djnavarro.net/img/meme/"
+
+meme(
+  img = glue(loc,"morpheus.png"),
+  upper = "what if i told you",
+  lower = "i made this in R",
+  size = 2
+)
+```
+
+![](slides_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+
+[Source: Danielle Navaro](http://djnavarro.net/post/2018-05-03-valid-social-commentary/)
+
+---
+
+## Memes and GIFs
+
+
+```r
+## install.packages("glue") ## only run this once
+## install.packages("meme") ## only run this once
+
+meme(
+  img = "img/cat.jpeg",
+  upper = "I have no time to be impressed",
+  lower = "I prefer to sleep",
+  size = 2
+)
+```
+
+![](slides_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
+
+---
+
+## Animations
+
+&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Getting ready to teach dplyr joins to new &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt; users tomorrow, so naturally I productively procrastinated by getting to know the new gganimate. It is the coolest! &lt;a href="https://t.co/1kkOi5D5TK"&gt;pic.twitter.com/1kkOi5D5TK&lt;/a&gt;&lt;/p&gt;&amp;mdash; Garrick Aden-Buie (@grrrck) &lt;a href="https://twitter.com/grrrck/status/1029567123029467136?ref_src=twsrc%5Etfw"&gt;August 15, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+
+---
+
+## Animations
+
+&lt;a href="https://raw.githubusercontent.com/gadenbuie/tidy-animated-verbs/master/images/anti-join.gif"&gt;
+&lt;img src="https://raw.githubusercontent.com/gadenbuie/tidy-animated-verbs/master/images/anti-join.gif" width="400"&gt;
+&lt;/a&gt;
+
+[Source: Github](https://github.com/gadenbuie/tidy-animated-verbs#tidy-animated-verbs)
 
 ---
 
@@ -104,24 +197,23 @@ class: inverse, center, middle
 &lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Just learned, courtesy of &lt;a href="https://twitter.com/AdamGruer?ref_src=twsrc%5Etfw"&gt;@AdamGruer&lt;/a&gt;, that there is an &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt; compiler app on iOS. What people may not know is that for years I have been using &amp;#39;sample&amp;#39; function in R to make decisions for difficult choices. Now I have it handy in my mobile!&lt;br&gt; &lt;a href="https://t.co/vQxVNhjchm"&gt;https://t.co/vQxVNhjchm&lt;/a&gt; &lt;a href="https://t.co/rCPubC6BeD"&gt;pic.twitter.com/rCPubC6BeD&lt;/a&gt;&lt;/p&gt;&amp;mdash; Emi Tanaka 🌾 (@statsgen) &lt;a href="https://twitter.com/statsgen/status/1027332304656465920?ref_src=twsrc%5Etfw"&gt;August 8, 2018&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
 
----
+
 
 ---
 class: inverse, center, middle
 
-# How can I use it?
-
+# WHow can I use it?
 ---
 
 ## Getting started
 
-1. Install R on computer: [RStudio](https://www.rstudio.com/products/rstudio/download/), [R project](https://stat.ethz.ch/CRAN/)).
+1. Install R on computer: via [RStudio](https://www.rstudio.com/products/rstudio/download/) or [R project](https://stat.ethz.ch/CRAN/).
 
 2. Or use R in browser: [RStudio Cloud](https://rstudio.cloud/). 
 
-3. Come up with a question you want to answer. 
+3. ⁉️ Come up with a question you want to answer. 
 
-4. Get your hands on data. Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+4. Get your hands on data 🔀 Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
 
 
 ---
