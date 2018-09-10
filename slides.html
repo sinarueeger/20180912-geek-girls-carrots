@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>An introduction to problem solving with R</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Sina Rüeger" />
+    <meta name="date" content="2018-09-12" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# An introduction to problem solving with R
+### Sina Rüeger
+### 2018-09-12
+
+---
+
+&lt;!-- updated: sys.date())
+&lt;!-- From here: https://slides.yihui.name/xaringan/ --&gt;
+
+
+
+---
+layout: true
+
+
+---
+class: left, middle
+
+# About me
+
+- Background in Data Analysis / Data Science
+
+- PhD in Life Sciences @ CHUV <i class="ion  ion-arrow-right-a "></i> PostDoc @ EPFL (analysis of genetic data)
+
+- <i class="fab  fa-r-project " style="color:#88398a;"></i>-Ladies Lausanne co-organiser
+
+- <i class="ion  ion-heart "></i> Data Science + Personalised Med + 
+
+---
+class: center, middle
+
+# What is R?
+
+---
+
+# R ...
+
+- is a program for statistical computing
+
+- just celebrated 25 year anniversary
+
+- To use R you need a computer + internet
+
+- You don't even need data, cause thats already provided
+
+- History / Rstudio / Tidyverse / 25 years R
+
+---
+
+
+---
+class: inverse, center, middle
+
+# What is R used for?
+
+---
+
+# Quite a few things
+
+- In general all data science,data analysis &amp; stats stuff
+
+- Me: genomics
+
+- make presentations (this one)
+
+
+---
+
+# Data journalism
+
+&lt;img src="img/datajournalism.png" width="600"&gt;
+
+[Source](https://www.srf.ch/static/srf-data/data/2018/federer/#/en)
+
+---
+
+# Make gifs
+
+&lt;img src="http://djnavarro.net/post/2018-05-03-valid-social-commentary_files/figure-html/unnamed-chunk-2-1.png" width="600"&gt;
+
+[Source by Danielle Navaro](http://djnavarro.net/post/2018-05-03-valid-social-commentary/)
+
+
+---
+
+# Making food choices
+
+&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Just learned, courtesy of &lt;a href="https://twitter.com/AdamGruer?ref_src=twsrc%5Etfw"&gt;@AdamGruer&lt;/a&gt;, that there is an &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt; compiler app on iOS. What people may not know is that for years I have been using &amp;#39;sample&amp;#39; function in R to make decisions for difficult choices. Now I have it handy in my mobile!&lt;br&gt; &lt;a href="https://t.co/vQxVNhjchm"&gt;https://t.co/vQxVNhjchm&lt;/a&gt; &lt;a href="https://t.co/rCPubC6BeD"&gt;pic.twitter.com/rCPubC6BeD&lt;/a&gt;&lt;/p&gt;&amp;mdash; Emi Tanaka 🌾 (@statsgen) &lt;a href="https://twitter.com/statsgen/status/1027332304656465920?ref_src=twsrc%5Etfw"&gt;August 8, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+---
+
+---
+class: inverse, center, middle
+
+# How can I use it?
+
+---
+
+## Getting started
+
+1. Install R on computer: [RStudio](https://www.rstudio.com/products/rstudio/download/), [R project](https://stat.ethz.ch/CRAN/)).
+
+2. Or use R in browser: [RStudio Cloud](https://rstudio.cloud/). 
+
+3. Come up with a question you want to answer. 
+
+4. Get your hands on data. Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+
+
+---
+class: inverse, center, middle
+
+# R Community
+
+---
+class: center, middle
+
+R is developing quickly <i class="fas  fa-rocket " style="color:black;"></i>
+
+<i class="fas  fa-rocket " style="color:black;"></i> R community can try you sort out priorities and help you learn
+
+---
+class: left, middle
+
+## R weekly
+
+https://rweekly.org/
+
+Weekly selection of blogposts
+
+Replicating code is a good way to learn
+
+---
+class: left, middle
+
+## TidyTuesday
+
+[TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+
+Get a dataset and a problem. 
+
+.pull-left[
+### Dataset
+]
+.pull-right[
+### Problem
+]
+
+---
+class: left, middle
+
+## R-Ladies
+
+Goal: increase gender diversity in the R community
+
+&lt;img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="100"&gt;
+
+---
+class: center, middle
+
+&lt;img src="https://raw.githubusercontent.com/rladies/Map-RLadies-Growing/master/rladies_growth.gif" &gt;
+
+
+---
+class: left, middle
+
+## R user groups nearby
+
+- R-Ladies chapter in Lausanne: https://www.meetup.com/rladies-lausanne/
+
+- Geneve R user group: https://www.meetup.com/Geneve-R-User-Group/
+
+- R Lunches in Geneve: http://use-r-carlvogt.github.io/prochains-lunchs/
+
+- adminR in Bern: https://www.meetup.com/adminR/
+
+- checkout global list [here (provided by jumping rivers)](https://jumpingrivers.github.io/meetingsR/).
+
+
+---
+class: inverse
+, center, middle
+# Podcasts 
+
+
+
+---
+class: cleft middle
+
+# Podcasts 
+
+- [Not so standard deviation](https://soundcloud.com/nssd-podcast) by Hilary Parker and Roger Peng.
+
+- [Credibly Curious](https://soundcloud.com/crediblycurious) by Saskia Freytag and Nicholas Tierney. 
+
+---
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

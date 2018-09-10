@@ -1,0 +1,18 @@
+/*  background-image: url(https://farm5.staticflickr.com/4504/24161677618_1d3332f35c_k_d.jpg);*/
+ 
+ .title-slide {
+  background-image: url(https://farm2.staticflickr.com/1889/30677415158_48fe54b59c_b.jpg);
+  background-size: cover;
+}
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Karla');
+@import url('https://fonts.googleapis.com/css?family=OpenSans');
+
+h1, h2, h3 {
+  font-family: 'Karla';
+  font-weight: normal;
+  font-style: italic;
+}
+body { font-family: 'OpenSans','Karla', 'Droid Serif', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif; }
+.remark-code, .remark-inline-code { font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace; }
