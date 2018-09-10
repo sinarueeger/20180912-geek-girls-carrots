@@ -84,14 +84,19 @@ class: middle
 
 - In general lots of (but not all) data science, data analysis &amp; stats stuff
 
-- Me: genomics
+- Me: genomics, biostatistics
 
 - To make presentations (this one)
 
 
 ---
 
-## Classical model fitting
+## Statistics
+
+
+```r
+#Cluster stuff
+```
 
 
 
@@ -148,7 +153,7 @@ meme(
 )
 ```
 
-![](slides_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+![](slides_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
 
 [Source: Danielle Navaro](http://djnavarro.net/post/2018-05-03-valid-social-commentary/)
 
@@ -169,7 +174,7 @@ meme(
 )
 ```
 
-![](slides_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+![](slides_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -202,7 +207,7 @@ meme(
 ---
 class: inverse, center, middle
 
-# WHow can I use it?
+# How can I use it?
 ---
 
 ## Getting started
@@ -214,6 +219,130 @@ class: inverse, center, middle
 3. ⁉️ Come up with a question you want to answer. 
 
 4. Get your hands on data 🔀 Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+
+
+---
+
+## Example: Airline Safety
+
+
+```r
+## install.packages("fivethirtyeight") ## run this once
+## install.packages("tidyverse") ## run this once
+library(fivethirtyeight) ## tell R that we will need the functions + datasets from the 538 R package
+library(tidyverse) ## thats another package bundle that we will need
+```
+
+```
+## ── Attaching packages ──────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+```
+
+```
+## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0
+```
+
+```
+## ── Conflicts ─────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::collapse() masks glue::collapse()
+## ✖ dplyr::filter()   masks stats::filter()
+## ✖ dplyr::lag()      masks stats::lag()
+```
+
+```r
+airline_safety ## this is the dataset we want
+```
+
+```
+## # A tibble: 56 x 9
+##    airline incl_reg_subsid… avail_seat_km_p… incidents_85_99
+##    &lt;chr&gt;   &lt;lgl&gt;                       &lt;dbl&gt;           &lt;int&gt;
+##  1 Aer Li… FALSE                   320906734               2
+##  2 Aerofl… TRUE                   1197672318              76
+##  3 Aeroli… FALSE                   385803648               6
+##  4 Aerome… TRUE                    596871813               3
+##  5 Air Ca… FALSE                  1865253802               2
+##  6 Air Fr… FALSE                  3004002661              14
+##  7 Air In… TRUE                    869253552               2
+##  8 Air Ne… TRUE                    710174817               3
+##  9 Alaska… TRUE                    965346773               5
+## 10 Alital… FALSE                   698012498               7
+## # ... with 46 more rows, and 5 more variables:
+## #   fatal_accidents_85_99 &lt;int&gt;, fatalities_85_99 &lt;int&gt;,
+## #   incidents_00_14 &lt;int&gt;, fatal_accidents_00_14 &lt;int&gt;,
+## #   fatalities_00_14 &lt;int&gt;
+```
+
+```r
+?airline_safety
+
+## number of rows
+nrow(airline_safety)
+```
+
+```
+## [1] 56
+```
+
+```r
+names(airline_safety)
+```
+
+```
+## [1] "airline"                "incl_reg_subsidiaries" 
+## [3] "avail_seat_km_per_week" "incidents_85_99"       
+## [5] "fatal_accidents_85_99"  "fatalities_85_99"      
+## [7] "incidents_00_14"        "fatal_accidents_00_14" 
+## [9] "fatalities_00_14"
+```
+
+```r
+ggplot(data = airline_safety) + geom_histogram(aes(x = avail_seat_km_per_week))
+```
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+![](slides_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+```r
+## wide to long
+airline_safety %&gt;% gather(key = c(airline, incl))
+```
+
+```
+## # A tibble: 504 x 2
+##    `c(airline, incl)` value                
+##    &lt;chr&gt;              &lt;chr&gt;                
+##  1 airline            Aer Lingus           
+##  2 airline            Aeroflot             
+##  3 airline            Aerolineas Argentinas
+##  4 airline            Aeromexico           
+##  5 airline            Air Canada           
+##  6 airline            Air France           
+##  7 airline            Air India            
+##  8 airline            Air New Zealand      
+##  9 airline            Alaska Airlines      
+## 10 airline            Alitalia             
+## # ... with 494 more rows
+```
+
+
+---
+class: left, middle
+
+## Source
+
+- Go to [TidyTuesday](https://github.com/rfordatascience/tidytuesday).
+
+- Pick a cool dataset: e.g. **Airline Safety**.
+
+- [Article](https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/) in FiveThirtyEight.
+
+- [Data](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018-08-07) from [FiveThirtyEight](https://cran.r-project.org/web/packages/fivethirtyeight/index.html) R-package.
 
 
 ---
@@ -260,7 +389,7 @@ class: left, middle
 
 ## R-Ladies
 
-Goal: increase gender diversity in the R community
+Goal: To increase gender diversity in the R community
 
 &lt;img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="100"&gt;
 
@@ -287,22 +416,18 @@ class: left, middle
 
 
 ---
-class: inverse
-, center, middle
-# Podcasts 
+class: left, middle
+## Podcasts 
 
-
-
----
-class: cleft middle
-
-# Podcasts 
 
 - [Not so standard deviation](https://soundcloud.com/nssd-podcast) by Hilary Parker and Roger Peng.
 
 - [Credibly Curious](https://soundcloud.com/crediblycurious) by Saskia Freytag and Nicholas Tierney. 
 
 ---
+class: linverse, center middle
+
+##SThank you
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

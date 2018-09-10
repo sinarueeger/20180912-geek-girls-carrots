@@ -77,14 +77,18 @@ class: middle
 
 - In general lots of (but not all) data science, data analysis & stats stuff
 
-- Me: genomics
+- Me: genomics, biostatistics
 
 - To make presentations (this one)
 
 
 ---
 
-## Classical model fitting
+## Statistics
+
+```{r}
+#Cluster stuff
+```
 
 
 
@@ -191,7 +195,7 @@ meme(
 ---
 class: inverse, center, middle
 
-# WHow can I use it?
+# How can I use it?
 ---
 
 ## Getting started
@@ -203,6 +207,45 @@ class: inverse, center, middle
 3. `r emo::ji("interrobang")` Come up with a question you want to answer. 
 
 4. Get your hands on data `r emo::ji("twisted_rightwards_arrows")` Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+
+
+---
+
+## Example: Airline Safety
+
+```{r}
+## install.packages("fivethirtyeight") ## run this once
+## install.packages("tidyverse") ## run this once
+library(fivethirtyeight) ## tell R that we will need the functions + datasets from the 538 R package
+library(tidyverse) ## thats another package bundle that we will need
+airline_safety ## this is the dataset we want
+?airline_safety
+
+## number of rows
+nrow(airline_safety)
+
+names(airline_safety)
+
+ggplot(data = airline_safety) + geom_histogram(aes(x = avail_seat_km_per_week))
+
+## wide to long
+airline_safety %>% gather(key = c(airline, incl))
+
+```
+
+
+---
+class: left, middle
+
+## Source
+
+- Go to [TidyTuesday](https://github.com/rfordatascience/tidytuesday).
+
+- Pick a cool dataset: e.g. **Airline Safety**.
+
+- [Article](https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/) in FiveThirtyEight.
+
+- [Data](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018-08-07) from [FiveThirtyEight](https://cran.r-project.org/web/packages/fivethirtyeight/index.html) R-package.
 
 
 ---
@@ -249,7 +292,7 @@ class: left, middle
 
 ## R-Ladies
 
-Goal: increase gender diversity in the R community
+Goal: To increase gender diversity in the R community
 
 <img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="100">
 
@@ -276,19 +319,15 @@ class: left, middle
 
 
 ---
-class: inverse
-, center, middle
-# Podcasts 
+class: left, middle
+## Podcasts 
 
-
-
----
-class: cleft middle
-
-# Podcasts 
 
 - [Not so standard deviation](https://soundcloud.com/nssd-podcast) by Hilary Parker and Roger Peng.
 
 - [Credibly Curious](https://soundcloud.com/crediblycurious) by Saskia Freytag and Nicholas Tierney. 
 
 ---
+class: linverse, center middle
+
+##SThank you
