@@ -88,6 +88,102 @@ class: middle
 
 - To make presentations (this one)
 
+---
+
+## Basic R 
+
+### Math operations
+
+```r
+1+1 ## basic math operations
+```
+
+```
+## [1] 2
+```
+
+### Important constants
+
+```r
+pi 
+```
+
+```
+## [1] 3.141593
+```
+
+
+---
+
+## Basic R 
+
+### Vector, matrices
+
+```r
+a &lt;- c(34, 1, 67) ## defining a vector
+mat &lt;- matrix(1:6, ncol = 2) ## defining a matrix
+class(a)
+```
+
+```
+## [1] "numeric"
+```
+
+```r
+class(mat)
+```
+
+```
+## [1] "matrix"
+```
+
+---
+
+## Basic R 
+### Object oriented
+
+```r
+summary(a)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     1.0    17.5    34.0    34.0    50.5    67.0
+```
+
+```r
+summary(mat)
+```
+
+```
+##        V1            V2     
+##  Min.   :1.0   Min.   :4.0  
+##  1st Qu.:1.5   1st Qu.:4.5  
+##  Median :2.0   Median :5.0  
+##  Mean   :2.0   Mean   :5.0  
+##  3rd Qu.:2.5   3rd Qu.:5.5  
+##  Max.   :3.0   Max.   :6.0
+```
+
+
+---
+
+## Basic R 
+
+### Asking for help
+
+```r
+?data.frame
+```
+
+### Making a plot
+
+```r
+plot(rnorm(100)) ## plot 100 numbers that were drawn randomly from a normal distribution
+```
+
+![](slides_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
 
 ---
 
@@ -98,26 +194,6 @@ class: middle
 ```r
 library(readr) ## for read_csv()
 library(dplyr) ## for rename()
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 library(skimr) ## for skim()
 library(ggplot2) ## for visualisations
 theme_set(theme_bw())
@@ -128,29 +204,27 @@ theme_set(theme_bw())
 
 ```r
 dat &lt;- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/datasets/swiss.csv")
-```
-
-```
-## Warning: Missing column names filled in: 'X1' [1]
-```
-
-```
-## Parsed with column specification:
-## cols(
-##   X1 = col_character(),
-##   Fertility = col_double(),
-##   Agriculture = col_double(),
-##   Examination = col_integer(),
-##   Education = col_integer(),
-##   Catholic = col_double(),
-##   Infant.Mortality = col_double()
-## )
-```
-
-```r
 # use library(readxl) for xls data!
 # swiss is actually an R package dataset of library(datasets), but has the column X1 as rownames
 ?swiss
+dat
+```
+
+```
+## # A tibble: 47 x 7
+##    X1    Fertility Agriculture Examination Education Catholic
+##    &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;       &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;
+##  1 Cour…      80.2        17            15        12     9.96
+##  2 Dele…      83.1        45.1           6         9    84.8 
+##  3 Fran…      92.5        39.7           5         5    93.4 
+##  4 Mout…      85.8        36.5          12         7    33.8 
+##  5 Neuv…      76.9        43.5          17        15     5.16
+##  6 Porr…      76.1        35.3           9         7    90.6 
+##  7 Broye      83.8        70.2          16         7    92.8 
+##  8 Glane      92.4        67.8          14         8    97.2 
+##  9 Gruy…      82.4        53.3          12         7    97.7 
+## 10 Sari…      82.9        45.2          16        13    91.4 
+## # ... with 37 more rows, and 1 more variable: Infant.Mortality &lt;dbl&gt;
 ```
 ---
 
@@ -159,34 +233,29 @@ dat &lt;- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/datasets/
 
 ```r
 ## summary
-skim(dat)
+skim(dat %&gt;% select(X1, Fertility, Education, Catholic))
 ```
 
 ```
 ## Skim summary statistics
 ##  n obs: 47 
-##  n variables: 7 
+##  n variables: 4 
 ## 
 ## ── Variable type:character ──────────────────────────────────────────────────────────────────────
 ##  variable missing complete  n min max empty n_unique
 ##        X1       0       47 47   4  12     0       47
 ## 
 ## ── Variable type:integer ────────────────────────────────────────────────────────────────────────
-##     variable missing complete  n  mean   sd p0 p25 p50 p75 p100     hist
-##    Education       0       47 47 10.98 9.62  1   6   8  12   53 ▇▇▁▁▂▁▁▁
-##  Examination       0       47 47 16.49 7.98  3  12  16  22   37 ▅▁▇▆▃▂▁▁
+##   variable missing complete  n  mean   sd p0 p25 p50 p75 p100     hist
+##  Education       0       47 47 10.98 9.62  1   6   8  12   53 ▇▇▁▁▂▁▁▁
 ## 
 ## ── Variable type:numeric ────────────────────────────────────────────────────────────────────────
-##          variable missing complete  n  mean    sd    p0   p25   p50   p75
-##       Agriculture       0       47 47 50.66 22.71  1.2  35.9  54.1  67.65
-##          Catholic       0       47 47 41.14 41.7   2.15  5.2  15.14 93.12
-##         Fertility       0       47 47 70.14 12.49 35    64.7  70.4  78.45
-##  Infant.Mortality       0       47 47 19.94  2.91 10.8  18.15 20    21.7 
-##   p100     hist
-##   89.7 ▂▅▂▆▅▇▆▃
-##  100   ▇▂▁▁▁▁▁▅
-##   92.5 ▁▁▁▂▇▅▃▂
-##   26.6 ▁▁▃▃▇▃▃▁
+##   variable missing complete  n  mean    sd    p0  p25   p50   p75  p100
+##   Catholic       0       47 47 41.14 41.7   2.15  5.2 15.14 93.12 100  
+##  Fertility       0       47 47 70.14 12.49 35    64.7 70.4  78.45  92.5
+##      hist
+##  ▇▂▁▁▁▁▁▅
+##  ▁▁▁▂▇▅▃▂
 ```
 ---
 
@@ -305,36 +374,23 @@ ggplot(data = dat, aes(Education, Fertility, color = Catholic.bin, group = Catho
 
 
 ```r
-## install.packages("glue") ## only run this once
-## install.packages("meme") ## only run this once
+## install.packages("glue") ## run this once
+## install.packages("meme") ## run this once
 
 library(meme) ## tell R that the meme package is needed
 library(glue) ## tell R that the glue package is needed
-```
 
-```
-## 
-## Attaching package: 'glue'
-```
-
-```
-## The following object is masked from 'package:dplyr':
-## 
-##     collapse
-```
-
-```r
 loc &lt;- "https://djnavarro.net/img/meme/"
 
 meme(
   img = glue(loc,"morpheus.png"),
   upper = "what if i told you",
   lower = "i made this in R",
-  size = 2
+  size = 1
 )
 ```
 
-![](slides_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+![](slides_files/figure-html/meme1-1.png)&lt;!-- --&gt;
 
 [Source: Danielle Navaro](http://djnavarro.net/post/2018-05-03-valid-social-commentary/)
 
@@ -344,18 +400,15 @@ meme(
 
 
 ```r
-## install.packages("glue") ## only run this once
-## install.packages("meme") ## only run this once
-
 meme(
   img = "img/cat.jpeg",
   upper = "I have no time to be impressed",
-  lower = "I prefer to sleep",
-  size = 2
+  lower = "MMMkay",
+  size = 1
 )
 ```
 
-![](slides_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+![](slides_files/figure-html/meme2-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -378,7 +431,7 @@ meme(
 
 ---
 
-# Making food choices
+## Making food choices
 
 &lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Just learned, courtesy of &lt;a href="https://twitter.com/AdamGruer?ref_src=twsrc%5Etfw"&gt;@AdamGruer&lt;/a&gt;, that there is an &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt; compiler app on iOS. What people may not know is that for years I have been using &amp;#39;sample&amp;#39; function in R to make decisions for difficult choices. Now I have it handy in my mobile!&lt;br&gt; &lt;a href="https://t.co/vQxVNhjchm"&gt;https://t.co/vQxVNhjchm&lt;/a&gt; &lt;a href="https://t.co/rCPubC6BeD"&gt;pic.twitter.com/rCPubC6BeD&lt;/a&gt;&lt;/p&gt;&amp;mdash; Emi Tanaka 🌾 (@statsgen) &lt;a href="https://twitter.com/statsgen/status/1027332304656465920?ref_src=twsrc%5Etfw"&gt;August 8, 2018&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
@@ -391,138 +444,23 @@ class: inverse, center, middle
 # How can I use it?
 ---
 
+class: left, middle
 ## Getting started
 
-1. Install R on computer: via [RStudio](https://www.rstudio.com/products/rstudio/download/) or [R project](https://stat.ethz.ch/CRAN/).
+1. **Install** R :
+  - On a computer: via [RStudio](https://www.rstudio.com/products/rstudio/download/) or [R project](https://stat.ethz.ch/CRAN/).
 
-2. Or use R in browser: [RStudio Cloud](https://rstudio.cloud/). 
+  - Or use R in browser: [RStudio Cloud](https://rstudio.cloud/). 
 
-3. ⁉️ Come up with a question you want to answer. 
+--
 
-4. Get your hands on data 🔀 Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+1. ⁉️ Come up with a question you want to answer. 
+--
 
-
----
-
-## Example: Airline Safety
-
-
-```r
-## install.packages("fivethirtyeight") ## run this once
-## install.packages("tidyverse") ## run this once
-library(fivethirtyeight) ## tell R that we will need the functions + datasets from the 538 R package
-library(tidyverse) ## thats another package bundle that we will need
-```
-
-```
-## ── Attaching packages ──────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-```
-
-```
-## ✔ tibble  1.4.2     ✔ purrr   0.2.5
-## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-## ✔ tibble  1.4.2     ✔ forcats 0.3.0
-```
-
-```
-## ── Conflicts ─────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ glue::collapse() masks dplyr::collapse()
-## ✖ dplyr::filter()  masks stats::filter()
-## ✖ dplyr::lag()     masks stats::lag()
-```
-
-```r
-airline_safety ## this is the dataset we want
-```
-
-```
-## # A tibble: 56 x 9
-##    airline incl_reg_subsid… avail_seat_km_p… incidents_85_99
-##    &lt;chr&gt;   &lt;lgl&gt;                       &lt;dbl&gt;           &lt;int&gt;
-##  1 Aer Li… FALSE                   320906734               2
-##  2 Aerofl… TRUE                   1197672318              76
-##  3 Aeroli… FALSE                   385803648               6
-##  4 Aerome… TRUE                    596871813               3
-##  5 Air Ca… FALSE                  1865253802               2
-##  6 Air Fr… FALSE                  3004002661              14
-##  7 Air In… TRUE                    869253552               2
-##  8 Air Ne… TRUE                    710174817               3
-##  9 Alaska… TRUE                    965346773               5
-## 10 Alital… FALSE                   698012498               7
-## # ... with 46 more rows, and 5 more variables:
-## #   fatal_accidents_85_99 &lt;int&gt;, fatalities_85_99 &lt;int&gt;,
-## #   incidents_00_14 &lt;int&gt;, fatal_accidents_00_14 &lt;int&gt;,
-## #   fatalities_00_14 &lt;int&gt;
-```
-
-```r
-?airline_safety
-
-## number of rows
-nrow(airline_safety)
-```
-
-```
-## [1] 56
-```
-
-```r
-names(airline_safety)
-```
-
-```
-## [1] "airline"                "incl_reg_subsidiaries" 
-## [3] "avail_seat_km_per_week" "incidents_85_99"       
-## [5] "fatal_accidents_85_99"  "fatalities_85_99"      
-## [7] "incidents_00_14"        "fatal_accidents_00_14" 
-## [9] "fatalities_00_14"
-```
-
-```r
-ggplot(data = airline_safety) + geom_histogram(aes(x = avail_seat_km_per_week))
-```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-![](slides_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
-
-```r
-## wide to long
-airline_safety %&gt;% gather(key = c(airline, incl))
-```
-
-```
-## # A tibble: 504 x 2
-##    `c(airline, incl)` value                
-##    &lt;chr&gt;              &lt;chr&gt;                
-##  1 airline            Aer Lingus           
-##  2 airline            Aeroflot             
-##  3 airline            Aerolineas Argentinas
-##  4 airline            Aeromexico           
-##  5 airline            Air Canada           
-##  6 airline            Air France           
-##  7 airline            Air India            
-##  8 airline            Air New Zealand      
-##  9 airline            Alaska Airlines      
-## 10 airline            Alitalia             
-## # ... with 494 more rows
-```
+1. Get your hands on data 🔀 Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
 
 
----
-class: left, middle
 
-## Source
-
-- Go to [TidyTuesday](https://github.com/rfordatascience/tidytuesday).
-
-- Pick a cool dataset: e.g. **Airline Safety**.
-
-- [Article](https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/) in FiveThirtyEight.
-
-- [Data](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018-08-07) from [FiveThirtyEight](https://cran.r-project.org/web/packages/fivethirtyeight/index.html) R-package.
 
 
 ---
@@ -533,35 +471,52 @@ class: inverse, center, middle
 ---
 class: center, middle
 
-R is developing quickly <i class="fas  fa-rocket " style="color:black;"></i>
+## <i class="fas  fa-rocket " style="color:black;"></i> R is developing quickly <i class="fas  fa-rocket " style="color:black;"></i>
 
-<i class="fas  fa-rocket " style="color:black;"></i> R community can try you sort out priorities and help you learn
+## <i class="fas  fa-users " style="color:black;"></i> R community can help you help you learn!
 
 ---
 class: left, middle
 
-## R weekly
+## R weekly Newsletter <i class="fas  fa-dove " style="color:black;"></i> <i class="fas  fa-envelope " style="color:black;"></i>
 
-https://rweekly.org/
+- Submit &amp; subscribe here: https://rweekly.org/
 
-Weekly selection of blogposts
+- Weekly selection of blogposts delivered into your mailbox.
 
-Replicating code is a good way to learn
+- Replicating code is a good way to learn!
 
 ---
 class: left, middle
 
 ## TidyTuesday
 
-[TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+[Take part in TidyTuesday](https://github.com/rfordatascience/tidytuesday)!
 
-Get a dataset and a problem. 
+TidyTuesday provides you weekly with a new dataset (and a goal).
+
+&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;The &lt;a href="https://twitter.com/R4DScommunity?ref_src=twsrc%5Etfw"&gt;@R4DScommunity&lt;/a&gt; welcomes you to week 19 of &lt;a href="https://twitter.com/hashtag/tidytuesday?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#tidytuesday&lt;/a&gt;!  We&amp;#39;re exploring &lt;a href="https://twitter.com/FiveThirtyEight?ref_src=twsrc%5Etfw"&gt;@FiveThirtyEight&lt;/a&gt; data on airline safety! Many thanks to 538 package maintainers!&lt;br&gt;&lt;br&gt;Data: &lt;a href="https://t.co/sElb4fcv3u"&gt;https://t.co/sElb4fcv3u&lt;/a&gt;       &lt;br&gt;Article: &lt;a href="https://t.co/qmm69g8khc"&gt;https://t.co/qmm69g8khc&lt;/a&gt;   &lt;a href="https://twitter.com/hashtag/r4ds?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#r4ds&lt;/a&gt; &lt;a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#tidyverse&lt;/a&gt; &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt; &lt;a href="https://twitter.com/hashtag/dataviz?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#dataviz&lt;/a&gt; &lt;a href="https://t.co/wl5UZCojEP"&gt;pic.twitter.com/wl5UZCojEP&lt;/a&gt;&lt;/p&gt;&amp;mdash; Thomas @ Strata Data NY - RStudio Booth (@thomas_mock) &lt;a href="https://twitter.com/thomas_mock/status/1026505945722101760?ref_src=twsrc%5Etfw"&gt;August 6, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+---
+class: left, middle
+
+## TidyTuesday
 
 .pull-left[
 ### Dataset
+
+&lt;a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2018-08-07/week19_airline_safety.csv"&gt;
+&lt;img src="img/airline_data.png" width="400"&gt;
+&lt;/a&gt;
 ]
+
 .pull-right[
-### Problem
+
+### Goal (if you need one)]
+&lt;a href="https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/"&gt;
+&lt;img src="img/airline_publication.png" width="300"&gt;
+&lt;/a&gt;
 ]
 
 ---
@@ -569,14 +524,31 @@ class: left, middle
 
 ## R-Ladies
 
-Goal: To increase gender diversity in the R community
+&lt;img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="300"&gt;
 
-&lt;img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="100"&gt;
+- **Goal**: *To increase gender diversity in the R community*
+
+- Founded in 2012 by [**Gabriela de Queiroz**](https://rladies.org/united-states-rladies/name/gabriela-de-queiroz/)
+
+- Currently **125 R-Ladies meetup groups** in 40 countries
 
 ---
 class: center, middle
 
-&lt;img src="https://raw.githubusercontent.com/rladies/Map-RLadies-Growing/master/rladies_growth.gif" &gt;
+&lt;img src="https://raw.githubusercontent.com/rladies/Map-RLadies-Growing/master/rladies_growth.gif"&gt;
+
+.footnote[[Source code](https://github.com/rladies/Map-RLadies-Growing) by [Daniela Vázquez](https://twitter.com/d4tagirl).]
+
+---
+class: left, middle
+
+&lt;img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="300"&gt;
+
+- Find our more about **R-Ladies**: https://rladies.org/
+
+- Find other **chapters**: https://gqueiroz.shinyapps.io/rshinylady/
+
+- Find **speakers**: https://rladies.org/directory/
 
 
 ---
@@ -592,22 +564,24 @@ class: left, middle
 
 - adminR in Bern: https://www.meetup.com/adminR/
 
-- checkout global list [here (provided by jumping rivers)](https://jumpingrivers.github.io/meetingsR/).
+- Check out global list [here](https://jumpingrivers.github.io/meetingsR/) (provided by jumping rivers)
 
 
 ---
 class: left, middle
-## Podcasts 
+
+## Keeping up on the road: Podcasts <i class="fas  fa-headphones " style="color:black;"></i>
 
 
-- [Not so standard deviation](https://soundcloud.com/nssd-podcast) by Hilary Parker and Roger Peng.
+- [Not So Standard Deviations](https://soundcloud.com/nssd-podcast) by Hilary Parker and Roger Peng.
 
 - [Credibly Curious](https://soundcloud.com/crediblycurious) by Saskia Freytag and Nicholas Tierney. 
 
----
-class: linverse, center middle
 
-##SThank you
+---
+class: inverse, center, middle
+
+# Thank you!
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

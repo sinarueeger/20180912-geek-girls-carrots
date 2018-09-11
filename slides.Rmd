@@ -17,6 +17,7 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+library <- function(...) suppressPackageStartupMessages(base::library(...))
 ```
 
 ---
@@ -81,6 +82,57 @@ class: middle
 
 - To make presentations (this one)
 
+---
+
+## Basic R 
+
+### Math operations
+```{r}
+1+1 ## basic math operations
+```
+
+### Important constants
+```{r}
+pi 
+```
+
+
+---
+
+## Basic R 
+
+### Vector, matrices
+```{r}
+a <- c(34, 1, 67) ## defining a vector
+mat <- matrix(1:6, ncol = 2) ## defining a matrix
+class(a)
+class(mat)
+```
+
+---
+
+## Basic R 
+### Object oriented
+```{r}
+summary(a)
+summary(mat)
+```
+
+
+---
+
+## Basic R 
+
+### Asking for help
+```{r}
+?data.frame
+```
+
+### Making a plot
+```{r, fig.width = 3, fig.height= 3}
+plot(rnorm(100)) ## plot 100 numbers that were drawn randomly from a normal distribution
+```
+
 
 ---
 
@@ -97,11 +149,12 @@ theme_set(theme_bw())
 ---
 
 ### 2. Import data
-```{r}
+```{r, warning = FALSE, message = FALSE}
 dat <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/datasets/swiss.csv")
 # use library(readxl) for xls data!
 # swiss is actually an R package dataset of library(datasets), but has the column X1 as rownames
 ?swiss
+dat
 ```
 ---
 
@@ -110,7 +163,7 @@ dat <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/datasets/swi
 ```{r}
 
 ## summary
-skim(dat)
+skim(dat %>% select(X1, Fertility, Education, Catholic))
 ```
 ---
 
@@ -186,9 +239,9 @@ ggplot(data = dat, aes(Education, Fertility, color = Catholic.bin, group = Catho
 
 ## Memes and GIFs
 
-```{r}
-## install.packages("glue") ## only run this once
-## install.packages("meme") ## only run this once
+```{r, meme1, fig.width = 3}
+## install.packages("glue") ## run this once
+## install.packages("meme") ## run this once
 
 library(meme) ## tell R that the meme package is needed
 library(glue) ## tell R that the glue package is needed
@@ -199,7 +252,7 @@ meme(
   img = glue(loc,"morpheus.png"),
   upper = "what if i told you",
   lower = "i made this in R",
-  size = 2
+  size = 1
 )
 
 ```
@@ -210,15 +263,13 @@ meme(
 
 ## Memes and GIFs
 
-```{r}
-## install.packages("glue") ## only run this once
-## install.packages("meme") ## only run this once
+```{r, meme2, fig.width = 4}
 
 meme(
   img = "img/cat.jpeg",
   upper = "I have no time to be impressed",
-  lower = "I prefer to sleep",
-  size = 2
+  lower = "MMMkay",
+  size = 1
 )
 
 ```
@@ -244,7 +295,7 @@ meme(
 
 ---
 
-# Making food choices
+## Making food choices
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Just learned, courtesy of <a href="https://twitter.com/AdamGruer?ref_src=twsrc%5Etfw">@AdamGruer</a>, that there is an <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> compiler app on iOS. What people may not know is that for years I have been using &#39;sample&#39; function in R to make decisions for difficult choices. Now I have it handy in my mobile!<br> <a href="https://t.co/vQxVNhjchm">https://t.co/vQxVNhjchm</a> <a href="https://t.co/rCPubC6BeD">pic.twitter.com/rCPubC6BeD</a></p>&mdash; Emi Tanaka 🌾 (@statsgen) <a href="https://twitter.com/statsgen/status/1027332304656465920?ref_src=twsrc%5Etfw">August 8, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -257,22 +308,23 @@ class: inverse, center, middle
 # How can I use it?
 ---
 
+class: left, middle
 ## Getting started
 
-1. Install R on computer: via [RStudio](https://www.rstudio.com/products/rstudio/download/) or [R project](https://stat.ethz.ch/CRAN/).
+1. **Install** R :
+  - On a computer: via [RStudio](https://www.rstudio.com/products/rstudio/download/) or [R project](https://stat.ethz.ch/CRAN/).
 
-2. Or use R in browser: [RStudio Cloud](https://rstudio.cloud/). 
+  - Or use R in browser: [RStudio Cloud](https://rstudio.cloud/). 
 
-3. `r emo::ji("interrobang")` Come up with a question you want to answer. 
+--
 
-4. Get your hands on data `r emo::ji("twisted_rightwards_arrows")` Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+1. `r emo::ji("interrobang")` Come up with a question you want to answer. 
+--
+
+1. Get your hands on data `r emo::ji("twisted_rightwards_arrows")` Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
 
 
----
-
-## Example: Airline Safety
-
-```{r}
+```{r, eval = FALSE, echo = FALSE}
 ## install.packages("fivethirtyeight") ## run this once
 ## install.packages("tidyverse") ## run this once
 library(fivethirtyeight) ## tell R that we will need the functions + datasets from the 538 R package
@@ -294,20 +346,6 @@ airline_safety %>% gather(key = c(airline, incl))
 
 
 ---
-class: left, middle
-
-## Source
-
-- Go to [TidyTuesday](https://github.com/rfordatascience/tidytuesday).
-
-- Pick a cool dataset: e.g. **Airline Safety**.
-
-- [Article](https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/) in FiveThirtyEight.
-
-- [Data](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018-08-07) from [FiveThirtyEight](https://cran.r-project.org/web/packages/fivethirtyeight/index.html) R-package.
-
-
----
 class: inverse, center, middle
 
 # R Community
@@ -315,35 +353,52 @@ class: inverse, center, middle
 ---
 class: center, middle
 
-R is developing quickly `r icon::fa_rocket(colour = "black")`
+## `r icon::fa_rocket(colour = "black")` R is developing quickly `r icon::fa_rocket(colour = "black")`
 
-`r icon::fa_rocket(colour = "black")` R community can try you sort out priorities and help you learn
+## `r icon::fa_users(colour = "black")` R community can help you help you learn!
 
 ---
 class: left, middle
 
-## R weekly
+## R weekly Newsletter `r icon::fa_dove (colour = "black")` `r icon::fa_envelope (colour = "black")`
 
-https://rweekly.org/
+- Submit & subscribe here: https://rweekly.org/
 
-Weekly selection of blogposts
+- Weekly selection of blogposts delivered into your mailbox.
 
-Replicating code is a good way to learn
+- Replicating code is a good way to learn!
 
 ---
 class: left, middle
 
 ## TidyTuesday
 
-[TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+[Take part in TidyTuesday](https://github.com/rfordatascience/tidytuesday)!
 
-Get a dataset and a problem. 
+TidyTuesday provides you weekly with a new dataset (and a goal).
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">The <a href="https://twitter.com/R4DScommunity?ref_src=twsrc%5Etfw">@R4DScommunity</a> welcomes you to week 19 of <a href="https://twitter.com/hashtag/tidytuesday?src=hash&amp;ref_src=twsrc%5Etfw">#tidytuesday</a>!  We&#39;re exploring <a href="https://twitter.com/FiveThirtyEight?ref_src=twsrc%5Etfw">@FiveThirtyEight</a> data on airline safety! Many thanks to 538 package maintainers!<br><br>Data: <a href="https://t.co/sElb4fcv3u">https://t.co/sElb4fcv3u</a>       <br>Article: <a href="https://t.co/qmm69g8khc">https://t.co/qmm69g8khc</a>   <a href="https://twitter.com/hashtag/r4ds?src=hash&amp;ref_src=twsrc%5Etfw">#r4ds</a> <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">#tidyverse</a> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://twitter.com/hashtag/dataviz?src=hash&amp;ref_src=twsrc%5Etfw">#dataviz</a> <a href="https://t.co/wl5UZCojEP">pic.twitter.com/wl5UZCojEP</a></p>&mdash; Thomas @ Strata Data NY - RStudio Booth (@thomas_mock) <a href="https://twitter.com/thomas_mock/status/1026505945722101760?ref_src=twsrc%5Etfw">August 6, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+---
+class: left, middle
+
+## TidyTuesday
 
 .pull-left[
 ### Dataset
+
+<a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2018-08-07/week19_airline_safety.csv">
+<img src="img/airline_data.png" width="400">
+</a>
 ]
+
 .pull-right[
-### Problem
+
+### Goal (if you need one)]
+<a href="https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/">
+<img src="img/airline_publication.png" width="300">
+</a>
 ]
 
 ---
@@ -351,14 +406,31 @@ class: left, middle
 
 ## R-Ladies
 
-Goal: To increase gender diversity in the R community
+<img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="300">
 
-<img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="100">
+- **Goal**: *To increase gender diversity in the R community*
+
+- Founded in 2012 by [**Gabriela de Queiroz**](https://rladies.org/united-states-rladies/name/gabriela-de-queiroz/)
+
+- Currently **125 R-Ladies meetup groups** in 40 countries
 
 ---
 class: center, middle
 
-<img src="https://raw.githubusercontent.com/rladies/Map-RLadies-Growing/master/rladies_growth.gif" >
+<img src="https://raw.githubusercontent.com/rladies/Map-RLadies-Growing/master/rladies_growth.gif">
+
+.footnote[[Source code](https://github.com/rladies/Map-RLadies-Growing) by [Daniela Vázquez](https://twitter.com/d4tagirl).]
+
+---
+class: left, middle
+
+<img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="300">
+
+- Find our more about **R-Ladies**: https://rladies.org/
+
+- Find other **chapters**: https://gqueiroz.shinyapps.io/rshinylady/
+
+- Find **speakers**: https://rladies.org/directory/
 
 
 ---
@@ -374,19 +446,22 @@ class: left, middle
 
 - adminR in Bern: https://www.meetup.com/adminR/
 
-- checkout global list [here (provided by jumping rivers)](https://jumpingrivers.github.io/meetingsR/).
+- Check out global list [here](https://jumpingrivers.github.io/meetingsR/) (provided by jumping rivers)
 
 
 ---
 class: left, middle
-## Podcasts 
+
+## Keeping up on the road: Podcasts `r icon::fa_headphones(colour = "black")`
 
 
-- [Not so standard deviation](https://soundcloud.com/nssd-podcast) by Hilary Parker and Roger Peng.
+- [Not So Standard Deviations](https://soundcloud.com/nssd-podcast) by Hilary Parker and Roger Peng.
 
 - [Credibly Curious](https://soundcloud.com/crediblycurious) by Saskia Freytag and Nicholas Tierney. 
 
----
-class: linverse, center middle
 
-##S hank you
+---
+class: inverse, center, middle
+
+# Thank you!
+
