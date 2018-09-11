@@ -91,13 +91,181 @@ class: middle
 
 ---
 
-## Statistics
+## Statistical analyses
 
+### 1. Load libraries
 
 ```r
-#Cluster stuff
+library(readr) ## for read_csv()
+library(dplyr) ## for rename()
 ```
 
+```
+## 
+## Attaching package: 'dplyr'
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
+library(skimr) ## for skim()
+library(ggplot2) ## for visualisations
+theme_set(theme_bw())
+```
+---
+
+### 2. Import data
+
+```r
+dat &lt;- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/datasets/swiss.csv")
+```
+
+```
+## Warning: Missing column names filled in: 'X1' [1]
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   X1 = col_character(),
+##   Fertility = col_double(),
+##   Agriculture = col_double(),
+##   Examination = col_integer(),
+##   Education = col_integer(),
+##   Catholic = col_double(),
+##   Infant.Mortality = col_double()
+## )
+```
+
+```r
+# use library(readxl) for xls data!
+# swiss is actually an R package dataset of library(datasets), but has the column X1 as rownames
+?swiss
+```
+---
+
+
+### 3. Summarise data
+
+```r
+## summary
+skim(dat)
+```
+
+```
+## Skim summary statistics
+##  n obs: 47 
+##  n variables: 7 
+## 
+## ── Variable type:character ──────────────────────────────────────────────────────────────────────
+##  variable missing complete  n min max empty n_unique
+##        X1       0       47 47   4  12     0       47
+## 
+## ── Variable type:integer ────────────────────────────────────────────────────────────────────────
+##     variable missing complete  n  mean   sd p0 p25 p50 p75 p100     hist
+##    Education       0       47 47 10.98 9.62  1   6   8  12   53 ▇▇▁▁▂▁▁▁
+##  Examination       0       47 47 16.49 7.98  3  12  16  22   37 ▅▁▇▆▃▂▁▁
+## 
+## ── Variable type:numeric ────────────────────────────────────────────────────────────────────────
+##          variable missing complete  n  mean    sd    p0   p25   p50   p75
+##       Agriculture       0       47 47 50.66 22.71  1.2  35.9  54.1  67.65
+##          Catholic       0       47 47 41.14 41.7   2.15  5.2  15.14 93.12
+##         Fertility       0       47 47 70.14 12.49 35    64.7  70.4  78.45
+##  Infant.Mortality       0       47 47 19.94  2.91 10.8  18.15 20    21.7 
+##   p100     hist
+##   89.7 ▂▅▂▆▅▇▆▃
+##  100   ▇▂▁▁▁▁▁▅
+##   92.5 ▁▁▁▂▇▅▃▂
+##   26.6 ▁▁▃▃▇▃▃▁
+```
+---
+
+
+### 4. Rename a column
+
+```r
+## colum to rownames + binary catholic (&gt; 50%)
+dat &lt;- dat %&gt;% rename(Region = X1) %&gt;% mutate(Catholic.bin = Catholic &gt; 50)
+dat
+```
+
+```
+## # A tibble: 47 x 8
+##    Region Fertility Agriculture Examination Education Catholic
+##    &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;int&gt;     &lt;int&gt;    &lt;dbl&gt;
+##  1 Court…      80.2        17            15        12     9.96
+##  2 Delem…      83.1        45.1           6         9    84.8 
+##  3 Franc…      92.5        39.7           5         5    93.4 
+##  4 Mouti…      85.8        36.5          12         7    33.8 
+##  5 Neuve…      76.9        43.5          17        15     5.16
+##  6 Porre…      76.1        35.3           9         7    90.6 
+##  7 Broye       83.8        70.2          16         7    92.8 
+##  8 Glane       92.4        67.8          14         8    97.2 
+##  9 Gruye…      82.4        53.3          12         7    97.7 
+## 10 Sarine      82.9        45.2          16        13    91.4 
+## # ... with 37 more rows, and 2 more variables: Infant.Mortality &lt;dbl&gt;,
+## #   Catholic.bin &lt;lgl&gt;
+```
+
+
+---
+
+### 5. Visualise data
+
+```r
+ggplot(data = dat) + geom_point(aes(Education, Fertility, color = Catholic))
+```
+
+![](slides_files/figure-html/data-vis-1.png)&lt;!-- --&gt;
+---
+
+### 7. Fit model
+
+```r
+mod &lt;- lm(Fertility ~ Education + Catholic.bin, data = dat)
+summary(mod)
+```
+
+```
+## 
+## Call:
+## lm(formula = Fertility ~ Education + Catholic.bin, data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -17.739  -5.832  -1.953   6.251  15.466 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)       75.9378     2.3091  32.886  &lt; 2e-16 ***
+## Education         -0.8006     0.1355  -5.909 4.59e-07 ***
+## Catholic.binTRUE   7.8173     2.6512   2.949   0.0051 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 8.729 on 44 degrees of freedom
+## Multiple R-squared:  0.5329,	Adjusted R-squared:  0.5117 
+## F-statistic:  25.1 on 2 and 44 DF,  p-value: 5.332e-08
+```
+---
+
+### 7. Linear regression on plot
+
+```r
+ggplot(data = dat, aes(Education, Fertility, color = Catholic.bin, group = Catholic.bin)) + geom_point() + geom_smooth(method = "lm")
+```
+
+![](slides_files/figure-html/data-vis-mod-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -142,7 +310,20 @@ class: middle
 
 library(meme) ## tell R that the meme package is needed
 library(glue) ## tell R that the glue package is needed
+```
 
+```
+## 
+## Attaching package: 'glue'
+```
+
+```
+## The following object is masked from 'package:dplyr':
+## 
+##     collapse
+```
+
+```r
 loc &lt;- "https://djnavarro.net/img/meme/"
 
 meme(
@@ -153,7 +334,7 @@ meme(
 )
 ```
 
-![](slides_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+![](slides_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
 
 [Source: Danielle Navaro](http://djnavarro.net/post/2018-05-03-valid-social-commentary/)
 
@@ -174,7 +355,7 @@ meme(
 )
 ```
 
-![](slides_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+![](slides_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -238,17 +419,16 @@ library(tidyverse) ## thats another package bundle that we will need
 ```
 
 ```
-## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tibble  1.4.2     ✔ purrr   0.2.5
 ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-## ✔ readr   1.1.1     ✔ forcats 0.3.0
+## ✔ tibble  1.4.2     ✔ forcats 0.3.0
 ```
 
 ```
 ## ── Conflicts ─────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::collapse() masks glue::collapse()
-## ✖ dplyr::filter()   masks stats::filter()
-## ✖ dplyr::lag()      masks stats::lag()
+## ✖ glue::collapse() masks dplyr::collapse()
+## ✖ dplyr::filter()  masks stats::filter()
+## ✖ dplyr::lag()     masks stats::lag()
 ```
 
 ```r
@@ -306,7 +486,7 @@ ggplot(data = airline_safety) + geom_histogram(aes(x = avail_seat_km_per_week))
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](slides_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+![](slides_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
 
 ```r
 ## wide to long

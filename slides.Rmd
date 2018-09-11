@@ -84,12 +84,71 @@ class: middle
 
 ---
 
-## Statistics
+## Statistical analyses
 
+### 1. Load libraries
 ```{r}
-#Cluster stuff
+library(readr) ## for read_csv()
+library(dplyr) ## for rename()
+library(skimr) ## for skim()
+library(ggplot2) ## for visualisations
+theme_set(theme_bw())
+```
+---
+
+### 2. Import data
+```{r}
+dat <- read_csv("https://vincentarelbundock.github.io/Rdatasets/csv/datasets/swiss.csv")
+# use library(readxl) for xls data!
+# swiss is actually an R package dataset of library(datasets), but has the column X1 as rownames
+?swiss
+```
+---
+
+
+### 3. Summarise data
+```{r}
+
+## summary
+skim(dat)
+```
+---
+
+
+### 4. Rename a column
+```{r}
+
+## colum to rownames + binary catholic (> 50%)
+dat <- dat %>% rename(Region = X1) %>% mutate(Catholic.bin = Catholic > 50)
+dat
 ```
 
+```{r, eval = FALSE, echo = FALSE}
+## visualise data
+pairs(swiss, panel = panel.smooth, main = "swiss data", col = 3 + (swiss$Catholic > 50))
+```
+---
+
+### 5. Visualise data
+```{r, data-vis, fig.width = 7, fig.height = 6}
+ggplot(data = dat) + geom_point(aes(Education, Fertility, color = Catholic))
+
+```
+---
+
+### 7. Fit model
+```{r}
+
+mod <- lm(Fertility ~ Education + Catholic.bin, data = dat)
+summary(mod)
+```
+---
+
+### 7. Linear regression on plot
+```{r, data-vis-mod, fig.width = 7, fig.height = 6}
+ggplot(data = dat, aes(Education, Fertility, color = Catholic.bin, group = Catholic.bin)) + geom_point() + geom_smooth(method = "lm")
+
+```
 
 
 ---
@@ -330,4 +389,4 @@ class: left, middle
 ---
 class: linverse, center middle
 
-##SThank you
+##S hank you
