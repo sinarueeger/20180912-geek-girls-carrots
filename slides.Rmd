@@ -144,6 +144,12 @@ plot(rnorm(100)) ## plot 100 numbers that were drawn randomly from a normal dist
 
 ### 1. Load libraries
 ```{r}
+## install packages (only run this once)
+## install.packages("readr")
+## install.packages("dplyr")
+## install.packages("skimr")
+## install.packages("ggplot2")
+
 library(readr) ## for read_csv()
 library(dplyr) ## for rename()
 library(skimr) ## for skim()
@@ -362,7 +368,7 @@ class: center, middle
 
 ## `r icon::fa_rocket(colour = "black")` R is developing quickly `r icon::fa_rocket(colour = "black")`
 
-## `r icon::fa_users(colour = "black")` R community can help you help you learn!
+## `r icon::fa_users(colour = "black")` R community can help you learn!
 
 ---
 class: left, middle
