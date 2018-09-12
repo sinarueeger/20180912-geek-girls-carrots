@@ -68,7 +68,7 @@ class: center, middle
 ## `r emo::ji("thinking")` `r icon::fa_arrow_right(colour = "gray")` `r icon::fa_table(colour = "black")` `r icon::fa_arrow_right(color = "gray")` `r icon::fa_laptop(colour = "#377eb8")` `r icon::fa_arrows_alt(color = "gray")` `r icon::fa_r_project(colour = "#377eb8")` `r icon::fa_arrow_right(colour = "gray")` `r icon::fa_chart_line(color = "#f03b20")` `r icon::fa_arrow_right(colour = "gray")` `r icon::fa_lightbulb(color = "#31a354")` `r icon::fa_arrow_right(colour = "gray")` `r icon::fa_map_signs(color = "#d95f0e")`
 <!--- question > getting data > analysing / distill knowledge > do soemthing with that -->
 
-`Question > Data > Analyse data with a tool > Distill information/data into knowledge > Feel enlightened :-) > Take decisions`
+`Question > Data > Analyse data with a tool > Distill knowlege from data > Feel enlightened :-) > Take decisions`
 
 ---
 class: inverse, center, middle
@@ -362,7 +362,7 @@ class: center, middle
 
 ## `r icon::fa_rocket(colour = "black")` R is developing quickly `r icon::fa_rocket(colour = "black")`
 
-## `r icon::fa_users(colour = "black")` R community can help you help you learn! `r emo::ji("party")`
+## `r icon::fa_users(colour = "black")` R community can help you help you learn!
 
 ---
 class: left, middle
@@ -400,10 +400,11 @@ class: left, middle
 
 .pull-right[
 
-### Goal (if you need one)]
+### Goal (if you need one)
 <a href="https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/">
 <img src="img/airline_publication.png" width="300">
 </a>
+
 ]
 
 ---
@@ -413,13 +414,13 @@ class: left, middle
 
 <img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="200">
 
-- **Global** organisation
+- **Global** organisation.
 
 - **Mission**: *To increase gender diversity in the R community* by encouraging, inspiring, and empowering underrepresented minorities.
 
-- Founded in 2012 by [**Gabriela de Queiroz**](https://rladies.org/united-states-rladies/name/gabriela-de-queiroz/)
+- Founded in 2012 by [**Gabriela de Queiroz**](https://rladies.org/united-states-rladies/name/gabriela-de-queiroz/).
 
-- Currently **125 R-Ladies meetup groups** in 40 countries
+- Currently **125 R-Ladies meetup groups** in 40 countries.
 
 ---
 class: center, middle
