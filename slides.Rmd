@@ -321,7 +321,7 @@ class: left, middle
 1. **Install** R :
   - On a computer: via [RStudio](https://www.rstudio.com/products/rstudio/download/) or [R project](https://stat.ethz.ch/CRAN/).
 
-  - Or (easier) use R in browser: [RStudio Cloud](https://rstudio.cloud/). (login with gmail account).
+  - Or (easier) use R in browser: [rdrr.io/snippets/](https://rdrr.io/snippets/) (no login required) or [Studio Cloud](https://rstudio.cloud/) (login with google or githu baccount).
 
 --
 
