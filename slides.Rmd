@@ -6,6 +6,7 @@ date: "2018-09-12"
 output:
   xaringan::moon_reader:
     css: ["default-fonts", "default", "my-theme.css"]
+    self_contained: true
     lib_dir: libs
     nature:
       beforeInit: "https://platform.twitter.com/widgets.js"

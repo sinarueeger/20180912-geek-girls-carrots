@@ -14,11 +14,13 @@ a, a > code {
 /* fonts */
 @import url('https://fonts.googleapis.com/css?family=Karla');
 @import url('https://fonts.googleapis.com/css?family=OpenSans');
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
 h1, h2, h3 {
-  font-family: 'Karla';
+  font-family: 'Karla', Helvetica;
   font-weight: normal;
   font-style: italic;
 }
-body { font-family: 'OpenSans','Karla', 'Droid Serif', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif; }
+
+body { font-family: 'OpenSans','Karla', Helvetica, 'Droid Serif', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif; }
 .remark-code, .remark-inline-code { font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace; }
