@@ -48,7 +48,7 @@ class: left, middle
 
 # R ...
 
-- is "a programming language for statistical computing""
+- is "a programming language for statistical computing"
 
 - is free
 
