@@ -65,12 +65,15 @@ class: left, middle
 
 
 ---
-class: left, middle
+class: center, middle
 
-```
-data &gt; distill knowlege &gt; impact
-```
+# Typical data analysis workflow
 
+
+## 🤔 <i class="fas  fa-arrow-right " style="color:gray;"></i> <i class="fas  fa-table " style="color:black;"></i> <i class="fas  fa-arrow-right " style="color:gray;"></i> <i class="fas  fa-laptop " style="color:#377eb8;"></i> <i class="fas  fa-arrows-alt " style="color:gray;"></i> <i class="fab  fa-r-project " style="color:#377eb8;"></i> <i class="fas  fa-arrow-right " style="color:gray;"></i> <i class="fas  fa-chart-line " style="color:#f03b20;"></i> <i class="fas  fa-arrow-right " style="color:gray;"></i> <i class="fas  fa-lightbulb " style="color:#31a354;"></i> <i class="fas  fa-arrow-right " style="color:gray;"></i> <i class="fas  fa-map-signs " style="color:#d95f0e;"></i>
+&lt;!--- question &gt; getting data &gt; analysing / distill knowledge &gt; do soemthing with that --&gt;
+
+`Question &gt; Data &gt; Analyse data with a tool &gt; Distill information/data into knowledge &gt; Feel enlightened :-) &gt; Take decisions`
 
 ---
 class: inverse, center, middle
@@ -381,7 +384,10 @@ library(meme) ## tell R that the meme package is needed
 library(glue) ## tell R that the glue package is needed
 
 loc &lt;- "https://djnavarro.net/img/meme/"
+```
 
+
+```r
 meme(
   img = glue(loc,"morpheus.png"),
   upper = "what if i told you",
@@ -389,8 +395,6 @@ meme(
   size = 1
 )
 ```
-
-![](slides_files/figure-html/meme1-1.png)&lt;!-- --&gt;
 
 [Source: Danielle Navaro](http://djnavarro.net/post/2018-05-03-valid-social-commentary/)
 
@@ -403,7 +407,7 @@ meme(
 meme(
   img = "img/cat.jpeg",
   upper = "I have no time to be impressed",
-  lower = "MMMkay",
+  lower = "MMMkay", 
   size = 1
 )
 ```
@@ -415,7 +419,7 @@ meme(
 
 ## Animations
 
-&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Getting ready to teach dplyr joins to new &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt; users tomorrow, so naturally I productively procrastinated by getting to know the new gganimate. It is the coolest! &lt;a href="https://t.co/1kkOi5D5TK"&gt;pic.twitter.com/1kkOi5D5TK&lt;/a&gt;&lt;/p&gt;&amp;mdash; Garrick Aden-Buie (@grrrck) &lt;a href="https://twitter.com/grrrck/status/1029567123029467136?ref_src=twsrc%5Etfw"&gt;August 15, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Getting ready to teach dplyr joins to new &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt; users tomorrow, so naturally I productively procrastinated by getting to know the new gganimate. It is the coolest! &lt;a href="https://t.co/1kkOi5D5TK"&gt;pic.twitter.com/1kkOi5D5TK&lt;/a&gt;&lt;/p&gt;&amp;mdash; Garrick Aden-Buie (@grrrck) &lt;a href="https://twitter.com/grrrck/status/1029567123029467136?ref_src=twsrc%5Etfw"&gt;August 15, 2018&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
 
 
@@ -431,7 +435,7 @@ meme(
 
 ---
 
-## Making food choices
+## Decision making for lunch
 
 &lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Just learned, courtesy of &lt;a href="https://twitter.com/AdamGruer?ref_src=twsrc%5Etfw"&gt;@AdamGruer&lt;/a&gt;, that there is an &lt;a href="https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#rstats&lt;/a&gt; compiler app on iOS. What people may not know is that for years I have been using &amp;#39;sample&amp;#39; function in R to make decisions for difficult choices. Now I have it handy in my mobile!&lt;br&gt; &lt;a href="https://t.co/vQxVNhjchm"&gt;https://t.co/vQxVNhjchm&lt;/a&gt; &lt;a href="https://t.co/rCPubC6BeD"&gt;pic.twitter.com/rCPubC6BeD&lt;/a&gt;&lt;/p&gt;&amp;mdash; Emi Tanaka 🌾 (@statsgen) &lt;a href="https://twitter.com/statsgen/status/1027332304656465920?ref_src=twsrc%5Etfw"&gt;August 8, 2018&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
@@ -450,14 +454,14 @@ class: left, middle
 1. **Install** R :
   - On a computer: via [RStudio](https://www.rstudio.com/products/rstudio/download/) or [R project](https://stat.ethz.ch/CRAN/).
 
-  - Or use R in browser: [RStudio Cloud](https://rstudio.cloud/). 
+  - Or (easier) use R in browser: [RStudio Cloud](https://rstudio.cloud/). (login with gmail account).
 
 --
 
-1. ⁉️ Come up with a question you want to answer. 
+1. ⁉️ Come up with a **question** you want to answer. 
 --
 
-1. Get your hands on data 🔀 Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+1. Get your hands on **data** 🔀 Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
 
 
 
@@ -473,25 +477,23 @@ class: center, middle
 
 ## <i class="fas  fa-rocket " style="color:black;"></i> R is developing quickly <i class="fas  fa-rocket " style="color:black;"></i>
 
-## <i class="fas  fa-users " style="color:black;"></i> R community can help you help you learn!
+## <i class="fas  fa-users " style="color:black;"></i> R community can help you help you learn! 🥳
 
 ---
 class: left, middle
 
-## R weekly Newsletter <i class="fas  fa-dove " style="color:black;"></i> <i class="fas  fa-envelope " style="color:black;"></i>
+## [RWeekly](https://rweekly.org/) Newsletter <i class="fas  fa-dove " style="color:black;"></i> <i class="fas  fa-envelope " style="color:black;"></i>
 
 - Submit &amp; subscribe here: https://rweekly.org/
 
-- Weekly selection of blogposts delivered into your mailbox.
+- Weekly selection of **blogs** delivered into your mailbox.
 
 - Replicating code is a good way to learn!
 
 ---
 class: left, middle
 
-## TidyTuesday
-
-[Take part in TidyTuesday](https://github.com/rfordatascience/tidytuesday)!
+## [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
 
 TidyTuesday provides you weekly with a new dataset (and a goal).
 
@@ -522,11 +524,13 @@ class: left, middle
 ---
 class: left, middle
 
-## R-Ladies
+## <i class="fab  fa-r-project " style="color:#88398a;"></i>-Ladies
 
-&lt;img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="300"&gt;
+&lt;img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="200"&gt;
 
-- **Goal**: *To increase gender diversity in the R community*
+- **Global** organisation
+
+- **Mission**: *To increase gender diversity in the R community* by encouraging, inspiring, and empowering underrepresented minorities.
 
 - Founded in 2012 by [**Gabriela de Queiroz**](https://rladies.org/united-states-rladies/name/gabriela-de-queiroz/)
 
@@ -554,7 +558,7 @@ class: left, middle
 ---
 class: left, middle
 
-## R user groups nearby
+## R user groups nearby <i class="fas  fa-users " style="color:black;"></i>
 
 - R-Ladies chapter in Lausanne: https://www.meetup.com/rladies-lausanne/
 
@@ -584,6 +588,7 @@ class: inverse, center, middle
 # Thank you!
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true

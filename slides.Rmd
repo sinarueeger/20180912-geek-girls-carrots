@@ -8,6 +8,7 @@ output:
     css: ["default-fonts", "default", "my-theme.css"]
     lib_dir: libs
     nature:
+      beforeInit: "https://platform.twitter.com/widgets.js"
       highlightStyle: github
       highlightLines: true
       
@@ -59,12 +60,15 @@ class: left, middle
 
 
 ---
-class: left, middle
+class: center, middle
 
-```
-data > distill knowlege > impact
-```
+# Typical data analysis workflow
 
+
+## `r emo::ji("thinking")` `r icon::fa_arrow_right(colour = "gray")` `r icon::fa_table(colour = "black")` `r icon::fa_arrow_right(color = "gray")` `r icon::fa_laptop(colour = "#377eb8")` `r icon::fa_arrows_alt(color = "gray")` `r icon::fa_r_project(colour = "#377eb8")` `r icon::fa_arrow_right(colour = "gray")` `r icon::fa_chart_line(color = "#f03b20")` `r icon::fa_arrow_right(colour = "gray")` `r icon::fa_lightbulb(color = "#31a354")` `r icon::fa_arrow_right(colour = "gray")` `r icon::fa_map_signs(color = "#d95f0e")`
+<!--- question > getting data > analysing / distill knowledge > do soemthing with that -->
+
+`Question > Data > Analyse data with a tool > Distill information/data into knowledge > Feel enlightened :-) > Take decisions`
 
 ---
 class: inverse, center, middle
@@ -239,7 +243,7 @@ ggplot(data = dat, aes(Education, Fertility, color = Catholic.bin, group = Catho
 
 ## Memes and GIFs
 
-```{r, meme1, fig.width = 3}
+```{r, meme1, echo = TRUE}
 ## install.packages("glue") ## run this once
 ## install.packages("meme") ## run this once
 
@@ -247,6 +251,9 @@ library(meme) ## tell R that the meme package is needed
 library(glue) ## tell R that the glue package is needed
 
 loc <- "https://djnavarro.net/img/meme/"
+```
+
+```{r, meme1b, eval = FALSE}
 
 meme(
   img = glue(loc,"morpheus.png"),
@@ -268,7 +275,7 @@ meme(
 meme(
   img = "img/cat.jpeg",
   upper = "I have no time to be impressed",
-  lower = "MMMkay",
+  lower = "MMMkay", 
   size = 1
 )
 
@@ -279,7 +286,7 @@ meme(
 
 ## Animations
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Getting ready to teach dplyr joins to new <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> users tomorrow, so naturally I productively procrastinated by getting to know the new gganimate. It is the coolest! <a href="https://t.co/1kkOi5D5TK">pic.twitter.com/1kkOi5D5TK</a></p>&mdash; Garrick Aden-Buie (@grrrck) <a href="https://twitter.com/grrrck/status/1029567123029467136?ref_src=twsrc%5Etfw">August 15, 2018</a></blockquote>
+<blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">Getting ready to teach dplyr joins to new <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> users tomorrow, so naturally I productively procrastinated by getting to know the new gganimate. It is the coolest! <a href="https://t.co/1kkOi5D5TK">pic.twitter.com/1kkOi5D5TK</a></p>&mdash; Garrick Aden-Buie (@grrrck) <a href="https://twitter.com/grrrck/status/1029567123029467136?ref_src=twsrc%5Etfw">August 15, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
@@ -295,7 +302,7 @@ meme(
 
 ---
 
-## Making food choices
+## Decision making for lunch
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Just learned, courtesy of <a href="https://twitter.com/AdamGruer?ref_src=twsrc%5Etfw">@AdamGruer</a>, that there is an <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> compiler app on iOS. What people may not know is that for years I have been using &#39;sample&#39; function in R to make decisions for difficult choices. Now I have it handy in my mobile!<br> <a href="https://t.co/vQxVNhjchm">https://t.co/vQxVNhjchm</a> <a href="https://t.co/rCPubC6BeD">pic.twitter.com/rCPubC6BeD</a></p>&mdash; Emi Tanaka 🌾 (@statsgen) <a href="https://twitter.com/statsgen/status/1027332304656465920?ref_src=twsrc%5Etfw">August 8, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -314,14 +321,14 @@ class: left, middle
 1. **Install** R :
   - On a computer: via [RStudio](https://www.rstudio.com/products/rstudio/download/) or [R project](https://stat.ethz.ch/CRAN/).
 
-  - Or use R in browser: [RStudio Cloud](https://rstudio.cloud/). 
+  - Or (easier) use R in browser: [RStudio Cloud](https://rstudio.cloud/). (login with gmail account).
 
 --
 
-1. `r emo::ji("interrobang")` Come up with a question you want to answer. 
+1. `r emo::ji("interrobang")` Come up with a **question** you want to answer. 
 --
 
-1. Get your hands on data `r emo::ji("twisted_rightwards_arrows")` Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
+1. Get your hands on **data** `r emo::ji("twisted_rightwards_arrows")` Take part in [TidyTuesday](https://github.com/rfordatascience/tidytuesday). 
 
 
 ```{r, eval = FALSE, echo = FALSE}
@@ -355,25 +362,23 @@ class: center, middle
 
 ## `r icon::fa_rocket(colour = "black")` R is developing quickly `r icon::fa_rocket(colour = "black")`
 
-## `r icon::fa_users(colour = "black")` R community can help you help you learn!
+## `r icon::fa_users(colour = "black")` R community can help you help you learn! `r emo::ji("party")`
 
 ---
 class: left, middle
 
-## R weekly Newsletter `r icon::fa_dove (colour = "black")` `r icon::fa_envelope (colour = "black")`
+## [RWeekly](https://rweekly.org/) Newsletter `r icon::fa_dove (colour = "black")` `r icon::fa_envelope (colour = "black")`
 
 - Submit & subscribe here: https://rweekly.org/
 
-- Weekly selection of blogposts delivered into your mailbox.
+- Weekly selection of **blogs** delivered into your mailbox.
 
 - Replicating code is a good way to learn!
 
 ---
 class: left, middle
 
-## TidyTuesday
-
-[Take part in TidyTuesday](https://github.com/rfordatascience/tidytuesday)!
+## [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
 
 TidyTuesday provides you weekly with a new dataset (and a goal).
 
@@ -404,11 +409,13 @@ class: left, middle
 ---
 class: left, middle
 
-## R-Ladies
+## `r icon::fa_r_project(colour = "#88398a")`-Ladies
 
-<img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="300">
+<img src="https://raw.githubusercontent.com/rladies/starter-kit/master/stickers/hex-logo-with-text.png" width="200">
 
-- **Goal**: *To increase gender diversity in the R community*
+- **Global** organisation
+
+- **Mission**: *To increase gender diversity in the R community* by encouraging, inspiring, and empowering underrepresented minorities.
 
 - Founded in 2012 by [**Gabriela de Queiroz**](https://rladies.org/united-states-rladies/name/gabriela-de-queiroz/)
 
@@ -436,7 +443,7 @@ class: left, middle
 ---
 class: left, middle
 
-## R user groups nearby
+## R user groups nearby `r icon::fa_users(colour = "black")`
 
 - R-Ladies chapter in Lausanne: https://www.meetup.com/rladies-lausanne/
 
