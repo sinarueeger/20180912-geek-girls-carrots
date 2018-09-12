@@ -472,3 +472,6 @@ class: inverse, center, middle
 
 # Thank you!
 
+Slides: [https://sinarueeger.github.io/20180912-geek-girls-carrots/slides#1](https://sinarueeger.github.io/20180912-geek-girls-carrots/slides#1)
+
+`r icon::fa_twitter(colour = "white")`: [@sinarueeger](https://twitter.com/sinarueeger)
