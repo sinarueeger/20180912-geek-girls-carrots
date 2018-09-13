@@ -2,7 +2,7 @@
 title: "An introduction to (problem solving with) R"
 subtitle: ""
 author: "Sina Rüeger"
-date: "2018-09-12"
+date: "2018-09-12 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     css: ["default-fonts", "default", "my-theme.css"]
