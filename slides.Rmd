@@ -6,7 +6,6 @@ date: "2018-09-12"
 output:
   xaringan::moon_reader:
     css: ["default-fonts", "default", "my-theme.css"]
-    self_contained: true
     lib_dir: libs
     nature:
       beforeInit: "https://platform.twitter.com/widgets.js"
@@ -470,10 +469,11 @@ class: left, middle
 ## Keeping up on the road: Podcasts `r icon::fa_headphones(colour = "black")`
 
 
-- [Not So Standard Deviations](https://soundcloud.com/nssd-podcast) by Hilary Parker and Roger Peng.
+- [Not So Standard Deviations](https://soundcloud.com/nssd-podcast) by Hilary Parker and Roger Peng. Data science podcast.
 
-- [Credibly Curious](https://soundcloud.com/crediblycurious) by Saskia Freytag and Nicholas Tierney. 
+- [Credibly Curious](https://soundcloud.com/crediblycurious) by Saskia Freytag and Nicholas Tierney. A podcast about R and statistics.
 
+- [DataCamp Podcast](https://www.datacamp.com/community/podcast) explores different data science jobs. It's not always, but often about R. 
 
 ---
 class: inverse, center, middle
@@ -481,5 +481,8 @@ class: inverse, center, middle
 # Thank you!
 
 Slides: [https://sinarueeger.github.io/20180912-geek-girls-carrots/slides#1](https://sinarueeger.github.io/20180912-geek-girls-carrots/slides#1)
+
+Source code: [https://github.com/sinarueeger/20180912-geek-girls-carrots/](https://github.com/sinarueeger/20180912-geek-girls-carrots/)
+
 
 `r icon::fa_twitter(colour = "white")`: [@sinarueeger](https://twitter.com/sinarueeger)
