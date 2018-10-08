@@ -19,6 +19,9 @@ output:
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library <- function(...) suppressPackageStartupMessages(base::library(...))
+knitr::opts_chunk$set(
+  tidy = TRUE
+)
 ```
 
 ---
